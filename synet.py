@@ -1,5 +1,7 @@
-from Bio.Blast import NCBIWWW, NCBIXML
-result_handle = NCBIWWW.qblast("blastn", "nt", "8332116")
-blast_records = NCBIXML.parse(result_handle)
-for blast_record in blast_records:
-    print(list(blast_record))
+from Bio.Blast.Applications import NcbiblastpCommandline
+target = "/netapp/home/mjohnson/synet/targets/mouse"
+query = "/netapp/home/mjohnson/synet/queries/4TNV.fas"
+
+blastp_cline = NcbiblastpCommandline(query=query, db=target, evalue=0.001,outfmt=5, out="out.xml")
+
+blastp_cline()
