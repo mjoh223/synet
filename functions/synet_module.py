@@ -3,20 +3,8 @@
 #from Bio import SeqIO
 import gffutils
 from pyfaidx import Fasta
-
-def gff_parse(gff_file, seq_dict):
-    in_handle = open(gff_file)
-    rec_list = []
-    for rec in GFF.parse(in_handle, base_dict = seq_dict):
-        rec_list.append(rec)
-    in_handle.close()
-    return rec_list
-
-def fasta_parse(fasta_file):
-    in_seq_handle = open(fasta_file)
-    seq_dict = SeqIO.to_dict(SeqIO.parse(in_seq_handle, "fasta"))
-    in_seq_handle.close()
-    return seq_dict
+import os.path
+from pathlib2 import Path
 
 def create_gff_db(gff_file, db_name):
     db = gffutils.create_db(gff_file, db_name, id_spec=["Name"], merge_strategy=create_unique)
@@ -39,9 +27,15 @@ def extract_fasta(locus_ids, fasta_file):
 if __name__ == "__main__":
     fasta_file = "/Users/matt/OneDrive/UCSF/JBD_Lab_Rotation/metadata/GCF_000006765.1_ASM676v1_protein.faa"
     gff_file = "/Users/matt/OneDrive/UCSF/JBD_Lab_Rotation/metadata/GCF_000006765.1_ASM676v1_genomic.gff"
-    #seq_dict = fasta_parse(fasta_file)
-    #print(gff_parse(gff_file, seq_dict)[30])
-    features = gff_db(db_name="pae_db", target_gene="NP_248723.1", window=10000, fasta_file=fasta_file)
+    my_file = Path("pae_db") 
+    try:
+        my_abs_path = my_file.resolve(strict=True)
+    except FileNotFoundError:
+        print("Creating Database\n")
+        create_gff_db(gff_file=gff_file, db_name="pae_db")
+    else:
+        print("Database Found\n")
+        features = gff_db(db_name="pae_db", target_gene="NP_248723.1", window=10000, fasta_file=fasta_file)
     headers = [f["Name"] for f in features]
     flat_headers = [x for sub_list in headers for x in sub_list]
     print(features[1])
