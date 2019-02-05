@@ -37,7 +37,7 @@ if __name__ == "__main__":
     fasta_file = "/Users/matt/OneDrive/UCSF/JBD_Lab_Rotation/metadata/GCF_000006765.1_ASM676v1_protein.faa"
 
     gff_files = glob.glob("/Users/matt/OneDrive/UCSF/JBD_Lab_Rotation/metadata/*.gff")
-    target_gene = "NP_248723.1"
+    target_gene = "YP_007392343.1"#"NP_248723.1" add something here to not care about the .1
     window = 800
     for gff_file in gff_files:
         db_file = Path(os.path.basename(gff_file))
@@ -45,18 +45,22 @@ if __name__ == "__main__":
         try:
             my_abs_path = db_file.resolve(strict=True)
         except:# FileNotFoundError:
-            print("Creating Database\n")
-            create_gff_db(gff_file=gff_file, db_name=db_name[:-4])
-            print("\tCreated db: {}\n".format(db_name))
+            print("Creating Database")
+            create_gff_db(gff_file=gff_file, db_name=db_name)
+            print("\tCreated db: {}".format(db_name))
         else:
-            print("Database Found\n")
-            features = gff_db(db_name=db_name, target_gene=target_gene, window=window, fasta_file=fasta_file)
-            headers = [f["Name"] for f in features]
-            flat_headers = [x for sub_list in headers for x in sub_list]
-            format_list = [len(features), target_gene, window]
-            print("\tFound {} genes around probe {} using a window of {}bp.".format(*format_list))
-            print([f[6] for f in features])
-
+            print("Database Found")
+            try:
+                features = gff_db(db_name=db_name, target_gene=target_gene, window=window, fasta_file=fasta_file)
+                headers = [f["Name"] for f in features]
+                flat_headers = [x for sub_list in headers for x in sub_list]
+                format_list = [len(features), target_gene, window]
+                print("Found {} genes around probe {} using a window of {}bp.".format(*format_list))
+                print([f[6] for f in features])
+                print([f["Parent"] for f in features])
+            except gffutils.exceptions.FeatureNotFoundError:
+                format_list = [target_gene, db_name]
+                print("{} not found in {}".format(*format_list))
 
 
 
