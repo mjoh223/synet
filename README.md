@@ -47,3 +47,16 @@ for seq in seed:
 		locus_members_list = gffLookup(rec) #A, B, C -> A1, A2, B1, B2, C1, C2, C3
 		putative_new_members = blast(locus_members_list)
 		check to see of new members are % identity to the recognition array
+
+#attempt 4
+for acr in recognitionseed
+	get sequence of acr
+		blast sequence
+		get many loci
+		align all members in loci to recognitionlist (init with seed members in it)
+			if a significant alignment, assign the same ID name
+		save to networklist: AxB, AxC, BxC (named by IDs)
+		append loci recognitionlist
+
+	#get locus members of acr
+
