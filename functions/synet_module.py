@@ -1,6 +1,8 @@
 import gffutils
 import re
 from pyfaidx import Fasta
+import itertools
+import csv
 import glob
 from pathlib2 import Path
 from Bio.Blast.Applications import NcbitblastxCommandline
@@ -53,7 +55,7 @@ if __name__ == "__main__":
     ###############################################################################
     
     #print(recognitionBuild(fasta_file))
-    window = 300
+    window = 3000
     f= open("/Users/matt/OneDrive/UCSF/JBD_Lab_Rotation/synet_data/queries/recognitionlist.fa","w+")
     recognition_seed_rawseq = []
     for acr in recognition_seed:
@@ -83,20 +85,26 @@ if __name__ == "__main__":
             locus_anchor.append(anchor)
 
     loci_list = []
+    network_list = []
     for gff_file in gff_files:
         db_name = os.path.join("/Users/matt/OneDrive/UCSF/JBD_Lab_Rotation/synet_data/gff_db/", os.path.basename(gff_file[:-4]+".SQL"))
         for anchor in locus_anchor:
             try:
                 many_loci = gff_db_query(db_name, anchor, window)
+                row = list(itertools.combinations(many_loci, 2))
+                network_list.append(many_loci)
                 loci_list.append(many_loci)
             except gffutils.exceptions.FeatureNotFoundError:
                 continue
-    #align all members in loci to recognitionlist (init with seed members) -- working on it --
-    print(loci_list)
+    ##working on this to create a network data structure
+    mylist = [list(itertools.combinations(loci, 2)) for loci in loci_list]
+    network_array = np.asarray(mylist)
+    #print(network_array.reshape(2,-2))
+    #np.savetxt("foo.csv", np.asarray(network_list).flatten(), delimiter="\t")
+    #align all members in loci to recognitionlist (init with seed members) -- DONE --
     recognitionlist = []
     recognitionlist.append(recognition_seed)
-
-    loci_list_rawseq = []
+    recognitionlist = sum(recognitionlist, [])
     for fna in fna_files:
         genes = faidx(fna)
         for loci in loci_list:
@@ -104,18 +112,22 @@ if __name__ == "__main__":
                 try:
                     query = str(genes[member])
                     for ref in recognition_seed_rawseq:
-                        print([member])
-                        aln_score = pairwise2.align.globalxx(query, ref[1], score_only=True)
-                        if aln_score >= 200:
-                            print([member, ref[0]])
-
-                            
+                        aln_score = pairwise2.align.localxx(query, ref[1], score_only=True)/max(len(ref[1]),len(query))
+                        print(aln_score)
+                        #if a significant alignment, assign the same ID name -- working on it --
+                        #if aln_score > .8:
+                           # print([member, ref[0], aln_score])
                 except:
                     continue
-        #for ref in recognition_seed_rawseq:
-        #for query in loci_list_rawseq:
-            #print(pairwise2.align.globalxx(query, ref, score_only=True)
-    
+
+    for loci in loci_list:
+        for l in loci:
+            if l not in recognitionlist:
+                recognitionlist.append(l)
+    print(recognitionlist)
+
+
+
 
 
 
