@@ -4,7 +4,25 @@ channels:
   - bioconda
   - defaults
 dependencies:
-  - blast=2.7.1=h0f9cf5d_6
+  - argh=0.26.1=py27_0
+  - bcbio-nextgen=1.1.0a=py27_8
+  - bcftools=1.9=hd68223c_1
+  - bedtools=2.27.1=h5c9b4e4_3
+  - bioblend=0.12.0=py_0
+  - biopython=1.68=py27_0
+  - blast=2.6.0=boost1.64_2
+  - cyvcf2=0.10.0=py27h355e19c_0
+  - dnapi=1.1=py_3
+  - fadapa=0.3.1=py_1
+  - geneimpacts=0.3.6=py27_3
+  - gffutils=0.9=py_1
+  - htslib=1.9=hd68223c_5
+  - ipython-cluster-helper=0.6.2=py_0
+  - libdeflate=1.0=h1de35cc_1
+  - logbook=1.4.1=py27h470a237_0
+  - mirtop=0.4.15a=py27_0
+  - mmtf-python=1.0.2=py27_0
+  - netifaces=0.10.4=py27_1
   - perl-archive-tar=2.32=pl526_0
   - perl-carp=1.38=pl526_1
   - perl-compress-raw-bzip2=2.084=pl526hfc679d8_0
@@ -20,40 +38,179 @@ dependencies:
   - perl-scalar-list-utils=1.45=pl526h470a237_3
   - perl-test-more=1.001002=pl526_1
   - perl-xsloader=0.24=pl526_0
-  - biopython=1.73=py37h1de35cc_0
+  - pybedtools=0.8.0=py27h5c9b4e4_1
+  - pyfaidx=0.5.5.2=py_0
+  - pysam=0.15.2=py27haf89782_1
+  - pyvcf=0.6.8=py27_0
+  - requests-toolbelt=0.5.0=py27_0
+  - samtools=1.9=hb029021_5
+  - seqcluster=1.2.4a14=py27_0
+  - simplejson=3.8.1=py27_0
+  - yamllint=1.2.1=py27_0
+  - appnope=0.1.0=py27_1000
+  - argcomplete=1.9.4=py27_1000
+  - arrow=0.12.1=py27_1002
+  - asn1crypto=0.24.0=py27_1003
+  - atomicwrites=1.3.0=py_0
+  - attrs=18.2.0=py_0
+  - azure=3.0.0=py27_0
+  - azure-common=1.1.16=py_0
+  - azure-mgmt=0.20.1=py27_0
+  - azure-mgmt-common=0.20.0=py27_0
+  - azure-mgmt-compute=0.20.1=py27_0
+  - azure-mgmt-network=0.20.1=py27_0
+  - azure-mgmt-nspkg=2.0.0=py27_0
+  - azure-mgmt-resource=0.20.1=py27_0
+  - azure-mgmt-storage=0.20.0=py27_0
+  - azure-nspkg=3.0.2=py_0
+  - azure-servicebus=0.20.1=py27_0
+  - azure-servicemanagement-legacy=0.20.1=py27_0
+  - azure-storage=0.20.3=py27_0
+  - backports=1.0=py_2
+  - backports.functools_lru_cache=1.5=py_1
+  - backports.os=0.1.1=py27_1000
+  - backports.shutil_get_terminal_size=1.0.0=py_3
+  - backports_abc=0.5=py_1
+  - bcrypt=3.1.4=py27h470a237_0
+  - beautifulsoup4=4.7.1=py27_1001
+  - boost=1.67.0=py27h3e44d54_0
+  - boost-cpp=1.67.0=h3a22d5f_0
+  - boto=2.49.0=py_0
   - bzip2=1.0.6=h1de35cc_1002
   - ca-certificates=2018.11.29=ha4d7672_0
-  - certifi=2018.11.29=py37_1000
+  - certifi=2018.11.29=py27_1000
+  - cffi=1.11.5=py27h342bebf_1001
+  - chardet=3.0.4=py27_1003
+  - click=7.0=py_0
+  - coloredlogs=10.0=py27_1000
+  - contextlib2=0.5.5=py_2
+  - coverage=4.5.2=py27h1de35cc_1000
+  - cycler=0.10.0=py_1
+  - cython=0.29.4=py27h0a44026_0
+  - decorator=4.3.2=py_0
+  - enum34=1.1.6=py27_1001
+  - fabric=1.14.0=py27_1000
+  - freetype=2.9.1=h597ad8a_1005
+  - funcsigs=1.0.2=py_3
+  - functools32=3.2.3.2=py_3
+  - future=0.17.1=py27_1000
+  - futures=3.2.0=py27_1000
   - gmp=6.1.2=h0a44026_1000
+  - h5py=2.9.0=nompi_py27h35dc34b_1102
+  - hdf5=1.10.4=nompi_h646315f_1105
+  - humanfriendly=4.17=py27_1000
   - icu=58.2=h0a44026_1000
+  - idna=2.8=py27_1000
+  - importlib_metadata=0.6=py27_0
+  - ipaddress=1.0.22=py_1
+  - ipykernel=4.10.0=py27_0
+  - ipyparallel=6.2.3=py27_1000
+  - ipython=5.8.0=py27_0
+  - ipython_genutils=0.2.0=py_1
+  - joblib=0.13.1=py_0
+  - jpeg=9c=h1de35cc_1001
+  - jupyter_client=5.2.4=py_1
+  - jupyter_core=4.4.0=py_0
+  - kiwisolver=1.0.1=py27h04f5b5a_1002
+  - krb5=1.14.6=0
   - libcxx=7.0.0=h2d50403_2
+  - libedit=3.1.20170329=hcfe32e1_1001
   - libffi=3.2.1=h0a44026_1005
   - libiconv=1.15=h1de35cc_1004
+  - libpng=1.6.36=ha441bb4_1000
+  - libsodium=1.0.16=h1de35cc_1001
+  - libtiff=4.0.10=h79f4b77_1001
+  - linecache2=1.0.0=py_1
   - llvm-meta=7.0.0=0
-  - mkl_fft=1.0.10=py37h1de35cc_1
-  - mkl_random=1.0.2=py37h1702cab_2
+  - matplotlib=2.2.3=py27h0e0179f_0
+  - mkl_fft=1.0.10=py27h1de35cc_1
+  - mkl_random=1.0.2=py27h1702cab_2
+  - mock=2.0.0=py27_1000
+  - more-itertools=4.3.0=py27_1000
+  - msgpack-python=0.6.1=py27h04f5b5a_0
   - ncurses=6.1=h0a44026_1002
   - nettle=3.3=0
-  - openssl=1.0.2p=h1de35cc_1002
+  - olefile=0.46=py_0
+  - openssl=1.1.1a=h1de35cc_1000
+  - pandas=0.24.1=py27h0a44026_0
+  - paramiko=2.4.2=py27_1000
+  - path.py=11.5.0=py_0
+  - pathlib2=2.3.3=py27_1000
+  - patsy=0.5.1=py_0
+  - pbr=5.1.2=py_0
   - pcre=8.41=h0a44026_1003
   - perl=5.26.2=h79c3c89_1001
-  - pip=19.0.1=py37_0
-  - python=3.7.1=h145921a_1000
+  - pexpect=4.6.0=py27_1000
+  - pickleshare=0.7.5=py27_1000
+  - pillow=5.4.1=py27hbddbef0_1000
+  - pip=19.0.1=py27_0
+  - pluggy=0.8.1=py_0
+  - progressbar2=3.38.0=py_1
+  - prompt_toolkit=1.0.15=py_1
+  - psutil=5.5.0=py27h1de35cc_0
+  - ptyprocess=0.6.0=py27_1000
+  - py=1.7.0=py_0
+  - pyasn1=0.4.4=py_1
+  - pycparser=2.19=py_0
+  - pycrypto=2.6.1=py27h1de35cc_1002
+  - pygments=2.3.1=py_0
+  - pynacl=1.3.0=py27h1de35cc_1000
+  - pyopenssl=19.0.0=py27_0
+  - pyparsing=2.3.1=py_0
+  - pysocks=1.6.8=py27_1002
+  - pytest=4.2.0=py27_0
+  - pytest-cov=2.6.1=py_0
+  - pytest-mock=1.10.0=py27_1000
+  - pytest-runner=4.2=py_1
+  - python-dateutil=2.7.5=py_0
+  - python-utils=2.3.0=py_1
+  - pytz=2018.9=py_0
+  - pyyaml=3.13=py27h1de35cc_1001
+  - pyzmq=17.1.2=py27h111632d_1001
   - readline=7.0=hcfe32e1_1001
-  - setuptools=40.7.1=py37_0
+  - reportlab=3.5.12=py27h5963b0d_1000
+  - requests=2.21.0=py27_1000
+  - scandir=1.9.0=py27h1de35cc_1000
+  - seaborn=0.9.0=py_0
+  - setuptools=40.7.3=py27_0
+  - simplegeneric=0.8.1=py_1
+  - singledispatch=3.4.0.3=py27_1000
+  - six=1.12.0=py27_1000
+  - soupsieve=1.7.3=py27_0
+  - sqlalchemy=1.2.17=py27h1de35cc_0
   - sqlite=3.26.0=h1765d9f_1000
+  - statsmodels=0.9.0=py27h917ab60_1000
+  - subprocess32=3.5.3=py27h470a237_0
+  - tabulate=0.8.3=py_0
   - tk=8.6.9=ha441bb4_1000
-  - wheel=0.32.3=py37_0
+  - toolz=0.9.0=py_1
+  - tornado=5.1.1=py27h1de35cc_1000
+  - traceback2=1.4.0=py27_0
+  - traitlets=4.3.2=py27_1000
+  - unittest2=1.1.0=py_0
+  - urllib3=1.24.1=py27_1000
+  - wcwidth=0.1.7=py_1
+  - wheel=0.32.3=py27_0
   - xz=5.2.4=h1de35cc_1001
+  - yaml=0.1.7=h1de35cc_1001
+  - zeromq=4.2.5=h0a44026_1006
   - zlib=1.2.11=h1de35cc_1004
   - blas=1.0=mkl
-  - boost=1.67.0=py37_4
+  - cryptography=2.4.2=py27ha12b0ac_0
+  - curl=7.62.0=ha441bb4_0
   - intel-openmp=2019.1=144
   - libboost=1.67.0=hebc422b_4
+  - libcurl=7.62.0=h051b688_0
   - libgfortran=3.0.1=h93005f0_2
   - mkl=2019.1=144
-  - numpy=1.15.4=py37hacdab7b_0
-  - numpy-base=1.15.4=py37h6575580_0
-  - py-boost=1.67.0=py37h6440ff4_4
+  - numpy=1.15.4=py27hacdab7b_0
+  - numpy-base=1.15.4=py27h6575580_0
+  - progressbar=2.3=py27_0
+  - py-boost=1.67.0=py27h6440ff4_4
+  - python=2.7.15=h8f8e585_6
+  - scipy=1.2.0=py27h1410ff5_0
+  - pip:
+    - bcbio-gff==0.6.4
+    - msgpack==0.6.1
 prefix: /anaconda3/envs/synet
 
